@@ -1,0 +1,134 @@
+/* ===========================================================================
+   tokens.css — un único lugar donde vive el lenguaje visual.
+   Si quieres cambiar el aspecto de toda la aplicación, se cambia aquí.
+   =========================================================================== */
+
+:root{
+  /* — superficies — */
+  --paper:      #F1F2EF;
+  --panel:      #FFFFFF;
+  --panel-alt:  #FAFAF8;
+  --sunk:       #E8E9E5;
+
+  /* — tinta — */
+  --ink:        #0F1317;
+  --ink-2:      #39414A;
+  --graphite:   #636B73;
+  --faint:      #98A0A7;
+
+  /* — filetes — */
+  --rule:       #E1E3DE;
+  --rule-2:     #CBCFC8;
+
+  /* — estados del algoritmo (el único color saturado de la interfaz) — */
+  --s-idle:     #B0B7BE;
+  --s-cmp:      #C0830A;
+  --s-swap:     #C73E54;
+  --s-write:    #5B4DC6;
+  --s-pivot:    #0D6F8D;
+  --s-done:     #1E8B55;
+  --banda:      rgba(91, 77, 198, .07);
+
+  /* — sombras — */
+  --sh-1: 0 1px 1px rgba(15,19,23,.035), 0 2px 5px -2px rgba(15,19,23,.05);
+  --sh-2: 0 1px 2px rgba(15,19,23,.05),  0 14px 30px -16px rgba(15,19,23,.22);
+  --sh-borde: inset 0 1px 0 rgba(255,255,255,.7);
+
+  --foco:       #5B4DC6;
+
+  /* — forma — */
+  --r-xs: 6px;
+  --r-sm: 9px;
+  --r-md: 12px;
+  --r-lg: 16px;
+
+  /* — tipografía — */
+  --ui:   'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --t-xs:   11.5px;
+  --t-sm:   12.5px;
+  --t-base: 13.5px;
+  --t-md:   15px;
+  --t-lg:   18px;
+  --t-xl:   23px;
+  --t-2xl:  31px;
+
+  /* — ritmo — */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 22px;
+  --esp-6: 30px;
+  --esp-7: 44px;
+
+  /* — movimiento — */
+  --ease: cubic-bezier(.2, .8, .25, 1);
+  --rapido: .14s var(--ease);
+  --medio:  .28s var(--ease);
+
+  --alto-linea-codigo: 25px;
+}
+
+/* — tema oscuro por preferencia del sistema — */
+@media (prefers-color-scheme: dark){
+  :root:not([data-tema="claro"]){
+    --paper:      #0B0D10;
+    --panel:      #13161A;
+    --panel-alt:  #171B20;
+    --sunk:       #1C2026;
+
+    --ink:        #E8EBEE;
+    --ink-2:      #C0C7CE;
+    --graphite:   #99A1A9;
+    --faint:      #6E767E;
+
+    --rule:       #232830;
+    --rule-2:     #323943;
+
+    --s-idle:     #39414B;
+    --s-cmp:      #EFA92F;
+    --s-swap:     #F05C72;
+    --s-write:    #8C7DF2;
+    --s-pivot:    #3BA6CE;
+    --s-done:     #3CBC7B;
+    --banda:      rgba(140,125,242,.12);
+
+    --sh-1: 0 1px 1px rgba(0,0,0,.3), 0 2px 6px -2px rgba(0,0,0,.4);
+    --sh-2: 0 1px 2px rgba(0,0,0,.35), 0 16px 34px -18px rgba(0,0,0,.8);
+    --sh-borde: inset 0 1px 0 rgba(255,255,255,.04);
+
+    --foco:       #8C7DF2;
+  }
+}
+
+/* — tema oscuro forzado desde el botón — */
+:root[data-tema="oscuro"]{
+  --paper:      #0B0D10;
+  --panel:      #13161A;
+  --panel-alt:  #171B20;
+  --sunk:       #1C2026;
+
+  --ink:        #E8EBEE;
+  --ink-2:      #C0C7CE;
+  --graphite:   #99A1A9;
+  --faint:      #6E767E;
+
+  --rule:       #232830;
+  --rule-2:     #323943;
+
+  --s-idle:     #39414B;
+  --s-cmp:      #EFA92F;
+  --s-swap:     #F05C72;
+  --s-write:    #8C7DF2;
+  --s-pivot:    #3BA6CE;
+  --s-done:     #3CBC7B;
+  --banda:      rgba(140,125,242,.12);
+
+  --sh-1: 0 1px 1px rgba(0,0,0,.3), 0 2px 6px -2px rgba(0,0,0,.4);
+  --sh-2: 0 1px 2px rgba(0,0,0,.35), 0 16px 34px -18px rgba(0,0,0,.8);
+  --sh-borde: inset 0 1px 0 rgba(255,255,255,.04);
+
+  --foco:       #8C7DF2;
+}

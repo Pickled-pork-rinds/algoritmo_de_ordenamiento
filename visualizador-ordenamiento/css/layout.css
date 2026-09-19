@@ -1,0 +1,211 @@
+/* ===========================================================================
+   layout.css — el esqueleto: barra superior, rejilla principal, riel y pie.
+   =========================================================================== */
+
+/* ------------------------------------------------------- barra superior -- */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(150%) blur(14px);
+  -webkit-backdrop-filter: saturate(150%) blur(14px);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar-in{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--esp-5);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-5);
+}
+
+.brand{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-right: auto;
+  min-width: 0;
+}
+.brand-mark{
+  align-self: center;
+  fill: var(--ink);
+  flex: 0 0 auto;
+}
+.brand-mark rect{ transition: opacity var(--medio); }
+.brand:hover .brand-mark rect:nth-child(1){ opacity: .45; }
+.brand:hover .brand-mark rect:nth-child(2){ opacity: .65; }
+.brand:hover .brand-mark rect:nth-child(3){ opacity: .85; }
+
+.brand-name{
+  font-size: var(--t-lg);
+  font-weight: 700;
+  letter-spacing: -.03em;
+}
+.brand-tag{
+  font-size: var(--t-sm);
+  color: var(--faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 700px){ .brand-tag{ display: none; } }
+
+/* — pestañas con indicador deslizante — */
+.tabs{
+  position: relative;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--sunk);
+  border-radius: 10px;
+}
+.tabs-ind{
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: 0;
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--sh-1);
+  transition: transform var(--medio), width var(--medio);
+  pointer-events: none;
+}
+.tabs button{
+  position: relative;
+  z-index: 1;
+  border: 0;
+  background: transparent;
+  color: var(--graphite);
+  padding: 6px 16px;
+  border-radius: 8px;
+  font: 500 var(--t-base)/1.4 var(--ui);
+  cursor: pointer;
+  transition: color var(--rapido);
+}
+.tabs button:hover{ color: var(--ink); }
+.tabs button[aria-selected="true"]{ color: var(--ink); }
+
+.icon-btn{
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px; height: 36px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--graphite);
+  cursor: pointer;
+  box-shadow: var(--sh-1);
+  transition: color var(--rapido), border-color var(--rapido);
+}
+.icon-btn:hover{ color: var(--ink); border-color: var(--rule-2); }
+.icon-btn svg{ position: absolute; transition: opacity var(--medio), transform var(--medio); }
+.icon-btn .i-sol{ opacity: 0; transform: rotate(-70deg) scale(.6); }
+.icon-btn .i-luna{ opacity: 1; transform: none; }
+:root[data-tema="oscuro"] .icon-btn .i-sol{ opacity: 1; transform: none; }
+:root[data-tema="oscuro"] .icon-btn .i-luna{ opacity: 0; transform: rotate(70deg) scale(.6); }
+@media (prefers-color-scheme: dark){
+  :root:not([data-tema="claro"]) .icon-btn .i-sol{ opacity: 1; transform: none; }
+  :root:not([data-tema="claro"]) .icon-btn .i-luna{ opacity: 0; transform: rotate(70deg) scale(.6); }
+}
+
+/* ------------------------------------------------------------ contenedor -- */
+.wrap{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--esp-6) var(--esp-5) var(--esp-7);
+}
+.vista[hidden]{ display: none; }
+
+.layout{
+  display: grid;
+  grid-template-columns: 286px minmax(0, 1fr);
+  gap: var(--esp-7);
+  align-items: start;
+}
+@media (max-width: 1000px){
+  .layout{ grid-template-columns: 1fr; gap: var(--esp-5); }
+}
+
+/* --------------------------------------------------------------- el riel -- */
+/* Sin tarjetas: sólo filetes separando bloques. Menos ruido, más jerarquía. */
+.rail{ display: flex; flex-direction: column; }
+.rail-sec{
+  padding: var(--esp-5) 0;
+  border-top: 1px solid var(--rule);
+}
+.rail-sec:first-child{ padding-top: 0; border-top: 0; }
+.rail-sec:last-child{ padding-bottom: 0; }
+
+.rail-h{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-3);
+  font-size: var(--t-base);
+  font-weight: 600;
+  color: var(--ink);
+}
+.rail-h-val{
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  font-weight: 400;
+  color: var(--faint);
+}
+.rail-note{
+  margin-top: var(--esp-3);
+  font-size: var(--t-sm);
+  line-height: 1.6;
+  color: var(--graphite);
+  max-width: 58ch;
+}
+
+/* ------------------------------------------------------------------- pie -- */
+.pie{
+  margin-top: var(--esp-7);
+  padding-top: var(--esp-4);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  flex-wrap: wrap;
+  font-size: var(--t-sm);
+  color: var(--faint);
+}
+.pie p{ max-width: 72ch; }
+.pie-equipo{ font-family: var(--mono); font-size: var(--t-xs); white-space: nowrap; }
+
+/* ---------------------------------------------------- ficha desplegable -- */
+.ficha{
+  margin-top: var(--esp-7);
+  padding-top: var(--esp-5);
+  border-top: 1px solid var(--rule);
+}
+.ficha > summary{
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--t-base);
+  font-weight: 500;
+  color: var(--graphite);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--rapido);
+}
+.ficha > summary::-webkit-details-marker{ display: none; }
+.ficha > summary:hover{ color: var(--ink); }
+.ficha > summary::before{
+  content: "";
+  width: 9px; height: 9px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: rotate(-45deg) translate(-1px, -1px);
+  transition: transform var(--medio);
+}
+.ficha[open] > summary::before{ transform: rotate(45deg) translate(-2px, -2px); }
+.ficha .tabla-caja{ margin-top: var(--esp-4); }
