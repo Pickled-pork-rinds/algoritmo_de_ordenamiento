@@ -8,16 +8,7 @@ ordenamiento sobre exactamente los mismos datos.
 
 ---
 
-## Integrantes
 
-| Nombre completo | Código | Responsabilidad principal |
-|---|---|---|
-| | | |
-| | | |
-| | | |
-| | | |
-
----
 
 ## Descripción
 
